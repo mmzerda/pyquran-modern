@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: pyquran-modern
-Version: 0.1.0
+Version: 0.2.0
 Summary: Python 3.13 compatible wrapper for pyquran
 Author: mmzerda
 License: MIT
