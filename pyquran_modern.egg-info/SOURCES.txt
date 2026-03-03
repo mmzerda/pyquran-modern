@@ -1,8 +1,0 @@
-README.md
-pyproject.toml
-pyquran_modern/__init__.py
-pyquran_modern/core.py
-pyquran_modern.egg-info/PKG-INFO
-pyquran_modern.egg-info/SOURCES.txt
-pyquran_modern.egg-info/dependency_links.txt
-pyquran_modern.egg-info/top_level.txt
