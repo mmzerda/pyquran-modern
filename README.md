@@ -1,15 +1,15 @@
 # PyQuran Modern 📖
 
-A modern, Python 3.13+ compatible wrapper for the `pyquran` library. 
+An experimental wrapper for the `pyquran` library targeting Python 3.13+. 
 حل مشكلة التوافق مع إصدارات بايثون الحديثة لمكتبة pyquran.
 
 ## Features | المميزات
-* **Python 3.13 Compatible**: Fixes the `audioop` removal issue.
+* **Python 3.13 target**: Uses `audioop-lts` rather than a simulated audio module. Full upstream compatibility still requires testing.
 * **Easy to use**: Simple functions for Quranic text and roots.
 
 ## Installation | التثبيت
 ```bash
-pip install pyquran-modern
+pip install .  # from the repository checkout
 ```
 
 ## Usage examples | أمثلة
