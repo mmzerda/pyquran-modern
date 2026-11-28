@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pyquran-modern"
 version = "0.2.0"
-description = "Python 3.13 compatible wrapper for pyquran"
+description = "Experimental wrapper for Quranic verse retrieval"
 readme = "README.md"
 authors = [ { name = "mmzerda" } ]
 license = { text = "MIT" }
@@ -15,5 +15,5 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 requires-python = ">=3.13"
-dependencies = ["pyquran"]
+dependencies = ["pyquran", "audioop-lts; python_version >= '3.13'"]
 
