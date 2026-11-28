@@ -1,13 +1,3 @@
-import sys
-from types import ModuleType
-
-# 1. حل مشكلة التوافق مع بايثون الحديثة (3.13+)
-if 'audioop' not in sys.modules:
-    mock = ModuleType('audioop')
-    mock.reverse = lambda data, width: data
-    sys.modules['audioop'] = mock
-
-# 2. استيراد المكتبة الأساسية
 from pyquran import quran
 
 # 3. القائمة الكاملة لـ 114 سورة (الخريطة الذكية)
@@ -35,22 +25,28 @@ SURAH_MAP = {
 
 # 4. الدوال الأساسية
 def get_word_root(word):
-    """جلب جذر الكلمة"""
-    return quran.get_root(quran.strip_tashkeel(word))
+    """Root analysis is not implemented by this wrapper."""
+    raise NotImplementedError("Root analysis is not supported by this wrapper.")
+
 
 def get_verse_text(surah_num, verse_num, with_tashkeel=True):
-    """جلب الآية بالرقم"""
-    try:
-        return quran.get_verse(surah_num, verse_num, with_tashkeel=with_tashkeel)
-    except Exception:
-        return "خطأ: تأكد من أرقام السورة والآية"
+    """Retrieve verse text; reject invalid indices rather than return an error as text."""
+    if type(surah_num) is not int or not 1 <= surah_num <= 114:
+        raise ValueError("Surah number must be an integer from 1 to 114.")
+    if type(verse_num) is not int or verse_num < 1:
+        raise ValueError("Verse number must be a positive integer.")
+    verse = quran.get_verse(surah_num, verse_num, with_tashkeel=with_tashkeel)
+    if not isinstance(verse, str) or not verse.strip():
+        raise ValueError("Verse unavailable for the supplied indices.")
+    return verse
+
 
 def get_verse_by_name(surah_name, verse_num, with_tashkeel=True):
     """الميزة الاحترافية: جلب الآية باسم السورة"""
     surah_id = SURAH_MAP.get(surah_name)
     if surah_id:
         return get_verse_text(surah_id, verse_num, with_tashkeel=with_tashkeel)
-    return f"السورة '{surah_name}' غير موجودة، تأكد من كتابة الاسم باللغة العربية الصحيحة (مثال: 'البقرة')."
+    raise ValueError(f"Unknown surah name: {surah_name}")
 
 def list_surahs():
     """قائمة بكافة السور المتاحة"""
